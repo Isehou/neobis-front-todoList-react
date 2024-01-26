@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./main.css";
 
-function TodoForm({ addTask }) {
-  const [inputValue, setInputValue] = useState("");
-
+function TodoForm({ addTask, inputValue, setInputValue }) {
   function handleInputChange(e) {
     setInputValue(e.target.value);
   }
   function handleSubmit(e) {
     e.preventDefault();
+
     console.log("Input value on submit: ", inputValue);
+
+    addTask(inputValue);
+    setInputValue("");
   }
 
   return (
@@ -23,7 +25,10 @@ function TodoForm({ addTask }) {
             className="input-box"
             type="text"
             placeholder="What do you want?"
-            onChange={handleInputChange}
+            value={inputValue}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
           />
         </label>
 

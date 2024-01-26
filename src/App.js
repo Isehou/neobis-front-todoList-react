@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import TodoList from "./component/TodoList";
+import TodoWrapper from "./component/TodoWrapper";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <TodoList />
+      <TodoWrapper />
     </div>
   );
 }
