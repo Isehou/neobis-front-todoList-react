@@ -8,6 +8,7 @@ import "./main.css";
 function TodoWrapper() {
   const [inputValue, setInputValue] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [category, setCategory] = useState("business"); // business or personal category
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -20,21 +21,20 @@ function TodoWrapper() {
       {
         id: renderUniqueID(),
         todo: inputValue,
-        type: "",
+        category,
         done: false,
         editable: false,
       },
     ];
     setTasks(newTasks);
     localStorage.setItem("tasks", JSON.stringify(newTasks));
-    console.log(newTasks);
+    setInputValue("");
   }
 
-  function editTask(id) {
-    console.log("edit");
+  function editTask(id, text) {
     const index = tasks.findIndex((index) => index.id === id);
     const newTasks = [...tasks];
-    newTasks[index].editable = true;
+    newTasks[index].todo = text;
     setTasks(newTasks);
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
@@ -43,12 +43,11 @@ function TodoWrapper() {
     let newTasks = tasks.filter((index) => {
       return index.id !== id;
     });
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
   function completedTask(id) {
-    console.log("completed");
     const index = tasks.findIndex((index) => index.id === id);
     const newTasks = [...tasks];
     newTasks[index].done = !newTasks[index].done;
@@ -68,11 +67,14 @@ function TodoWrapper() {
           addTask={addTask}
           inputValue={inputValue}
           setInputValue={setInputValue}
+          category={category}
+          setCategory={setCategory}
         />
       </div>
       <div className="todo-tasks-list__container">
         <p className="subtitle">TODO LIST</p>
         <TodosCreator
+          category={category}
           tasks={tasks}
           setInputValue={setInputValue}
           editTask={editTask}

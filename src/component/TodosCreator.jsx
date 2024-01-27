@@ -1,7 +1,9 @@
 import React from "react";
 import "./main.css";
+import TodoItem from "./TodoItem";
 
 function TodosCreator({
+  category,
   tasks,
   editTask,
   completedTask,
@@ -10,31 +12,19 @@ function TodosCreator({
 }) {
   return (
     <ul id="todo-list" className="list">
-      {tasks.map((task) => (
-        <li key={task.id} className={task.done ? "completed" : ""}>
-          <label className="checkbox">
-            <input
-              type="checkbox"
-              onChange={() => completedTask(task.id)}
-              checked={task.done}
-            />
-          </label>
-          <input
-            className="input-text"
-            value={task.todo}
-            onChange={(e) => setInputValue(e.target.value)}
-          />{" "}
-          <button
-            className="edit-btn"
-            onClick={() => editTask(task.id, task.todo)}
-          >
-            Edit
-          </button>
-          <button className="delete-btn" onClick={() => deleteTask(task.id)}>
-            Delete
-          </button>
-        </li>
-      ))}
+      {tasks
+        // .filter((el) => el.category === category)
+        .map((task) => (
+          <TodoItem
+            key={task.id}
+            task={task}
+            category={category}
+            editTask={editTask}
+            completedTask={completedTask}
+            deleteTask={deleteTask}
+            setInputValue={setInputValue}
+          />
+        ))}
     </ul>
   );
 }

@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import "./main.css";
 
-function TodoForm({ addTask, inputValue, setInputValue }) {
+function TodoForm({
+  addTask,
+  inputValue,
+  setInputValue,
+  category,
+  setCategory,
+}) {
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Input value on submit: ", inputValue);
-    setInputValue("");
-  }
 
+    console.log("Input value on submit: ", inputValue);
+    if (inputValue !== "") {
+      addTask();
+    }
+  }
   return (
     <>
       <form id="new-todo-form" onSubmit={handleSubmit}>
@@ -32,9 +40,9 @@ function TodoForm({ addTask, inputValue, setInputValue }) {
               <input
                 className="radio-category radio"
                 type="radio"
-                value="business"
                 name="category"
-                onChange={addTask}
+                checked={category === "business"}
+                onChange={(e) => setCategory("business")}
               />
               <span className="business radio"></span>
               <p>Business</p>
@@ -43,9 +51,9 @@ function TodoForm({ addTask, inputValue, setInputValue }) {
               <input
                 className="radio-category radio"
                 type="radio"
-                value="personal"
                 name="category"
-                onChange={addTask}
+                checked={category === "personal"}
+                onChange={(e) => setCategory("personal")}
               />
               <span className="personal radio"></span>
               <p>Personal</p>
