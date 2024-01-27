@@ -11,7 +11,7 @@ function TodosCreator({
   return (
     <ul id="todo-list" className="list">
       {tasks.map((task) => (
-        <li key={task.id}>
+        <li key={task.id} className={task.done ? "completed" : ""}>
           <label className="checkbox">
             <input
               type="checkbox"

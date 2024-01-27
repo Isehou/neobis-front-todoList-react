@@ -15,7 +15,6 @@ function TodoForm({ addTask, inputValue, setInputValue }) {
         <p className="subtitle">What's on your todo list?</p>
         <label className="input-box__label">
           <input
-            id="input-box"
             className="input-box"
             type="text"
             placeholder="What do you want?"
@@ -31,7 +30,6 @@ function TodoForm({ addTask, inputValue, setInputValue }) {
           <div className="radio-btn__wrapper">
             <label className="radio-btn">
               <input
-                id="category1"
                 className="radio-category radio"
                 type="radio"
                 value="business"
@@ -43,7 +41,6 @@ function TodoForm({ addTask, inputValue, setInputValue }) {
             </label>
             <label className="radio-btn">
               <input
-                id="category2"
                 className="radio-category radio"
                 type="radio"
                 value="personal"
@@ -56,7 +53,7 @@ function TodoForm({ addTask, inputValue, setInputValue }) {
           </div>
         </div>
 
-        <button id="add-todo" className="add-todo__btn" onClick={addTask}>
+        <button className="add-todo__btn" onClick={addTask}>
           ADD TODO
         </button>
       </form>

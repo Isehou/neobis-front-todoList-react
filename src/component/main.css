@@ -150,6 +150,10 @@ input:checked ~ .radio::after {
   margin: 0 15px;
   width: 330px;
 }
+.completed .input-text {
+  text-decoration: line-through;
+  color: #747474;
+}
 .list button {
   margin: 0 5px;
   padding: 10px;
@@ -215,9 +219,4 @@ input:checked ~ .radio::after {
 }
 .personal.completed .checkbox::after {
   background-color: #f82ca3;
-}
-.business.completed .input-text,
-.personal.completed .input-text {
-  text-decoration: line-through;
-  color: #555;
 }

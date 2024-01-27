@@ -32,17 +32,28 @@ function TodoWrapper() {
 
   function editTask(id) {
     console.log("edit");
-    let editData = tasks.findIndex((task) => task.id === id);
+    const index = tasks.findIndex((index) => index.id === id);
+    const newTasks = [...tasks];
+    newTasks[index].editable = true;
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
-  function completedTask() {
-    console.log("completed");
-  }
+
   function deleteTask(id) {
-    let deleteData = tasks.filter((index) => {
+    let newTasks = tasks.filter((index) => {
       return index.id !== id;
     });
-    localStorage.setItem("tasks", JSON.stringify(deleteData));
-    setTasks(deleteData);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
+  }
+
+  function completedTask(id) {
+    console.log("completed");
+    const index = tasks.findIndex((index) => index.id === id);
+    const newTasks = [...tasks];
+    newTasks[index].done = !newTasks[index].done;
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
   return (
