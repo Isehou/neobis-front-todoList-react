@@ -1,31 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodosCreator from "./TodosCreator";
 import TodoForm from "./TodoForm";
+import renderUniqueID from "./RenderUniqueID";
 
 import "./main.css";
 
 function TodoWrapper() {
-  function uniqueID() {
-    return Math.floor(Math.random() * 10000);
-  }
-
   const [inputValue, setInputValue] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    setTasks(savedTasks);
+  }, []);
+
   function addTask() {
-    const newTask = {
-      id: uniqueID(),
-      todo: "",
-      type: "",
-      done: false,
-      editable: false,
-    };
-    setTasks([...tasks, { newTask }]);
-    // setInputValue(inputValue);
+    const newTasks = [
+      ...tasks,
+      {
+        id: renderUniqueID(),
+        todo: inputValue,
+        type: "",
+        done: false,
+        editable: false,
+      },
+    ];
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    console.log(newTasks);
   }
-  function editTask() {}
-  function completedTask() {}
-  function deleteTask() {}
+
+  function editTask(id) {
+    console.log("edit");
+    let editData = tasks.findIndex((task) => task.id === id);
+  }
+  function completedTask() {
+    console.log("completed");
+  }
+  function deleteTask(id) {
+    let deleteData = tasks.filter((index) => {
+      return index.id !== id;
+    });
+    localStorage.setItem("tasks", JSON.stringify(deleteData));
+    setTasks(deleteData);
+  }
 
   return (
     <section className="todo">
@@ -43,17 +61,13 @@ function TodoWrapper() {
       </div>
       <div className="todo-tasks-list__container">
         <p className="subtitle">TODO LIST</p>
-        {tasks.map((todo, index) => {
-          <TodosCreator
-            tasks={todo}
-            key={index}
-            editTask={editTask}
-            completedTask={completedTask}
-            deleteTask={deleteTask}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-          />;
-        })}
+        <TodosCreator
+          tasks={tasks}
+          setInputValue={setInputValue}
+          editTask={editTask}
+          completedTask={completedTask}
+          deleteTask={deleteTask}
+        />
       </div>
     </section>
   );

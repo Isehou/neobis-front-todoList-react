@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import "./main.css";
 
 function TodoForm({ addTask, inputValue, setInputValue }) {
-  function handleInputChange(e) {
-    setInputValue(e.target.value);
-  }
   function handleSubmit(e) {
     e.preventDefault();
-
     console.log("Input value on submit: ", inputValue);
-
-    addTask(inputValue);
     setInputValue("");
   }
 
