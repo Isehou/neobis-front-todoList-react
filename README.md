@@ -6,22 +6,22 @@ Learn React and develop a Todo List mini-site with task management functionality
 
 <h2>Materials for Study</h2>
 
-<h4>node, npm, package.json</h4>
-<h4>React Basics</h4>
-          - create-react-app,
-          - Components (+import and export of components),
-          - JSX
-          - React DOM and event listeners
-          - props
-  <h4>react hooks (what are hooks and what are they for)</h4>
-          -useState
-          - useEffect
-  <h4>data exchange between components (props)</h4>
-  <h4>study the basic life cycle of components:</h4> 
-          - mount
-          - update (render)
-          - unmount
- <h4>how react is rendered (virtual dom)</h4>
+          node, npm, package.json
+          React Basics
+              - create-react-app,
+              - Components (+import and export of components),
+              - JSX
+              - React DOM and event listeners
+              - props
+          react hooks (what are hooks and what are they for)
+              - useState
+              - useEffect
+          data exchange between components (props)
+          study the basic life cycle of components:
+              - mount
+              - update (render)
+              - unmount
+          how react is rendered (virtual dom)
 
 
 <h2>Technologies</h2>
