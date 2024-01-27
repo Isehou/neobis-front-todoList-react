@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TodoWrapper from "./component/TodoWrapper";
+import TodoWrapper from "./components/TodoWrapper";
 
 import "./App.css";
 
