@@ -36,6 +36,9 @@ Learn React and develop a Todo List mini-site with task management functionality
 
 <h2>Demo</h2>
 
+<h4>Screenshots</h4>
+
+
 <h4>Check out the live demo </h4>https://neobis-front-todo-list-react-flax.vercel.app/
 
 <h2>Getting Started</h2>
@@ -44,7 +47,7 @@ Learn React and develop a Todo List mini-site with task management functionality
 
 <h5>1. Clone the repository:<h5>
 
-    git clone https://github.com/isehou/neobis-front-todolist-react.git
+    git clone https://github.com/Isehou/neobis-front-todoList-react.git
 
 <h2>Contact</h2>
 
